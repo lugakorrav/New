@@ -8,16 +8,23 @@ int main()
 	cin>>v1>>v2>>v3;
 	cout<<"Введите время"<<endl;
 	cin>>t1>>t2>>t3;
-	s=(v1*t1+v2*t2+v3*t3)/2;
-	if (v1*t1<s)
+	if ((t1<0)||(t2<0)||(t3<0)||(v1<0)||(v2<0)||(v3<0))
 	{
-		if (v1*t1+v2*t2<s)
+		cout<<"Введены некорректные значения."<<endl;
+	}
+	else
+	{
+	double s1=v1*t1,s2=v2*t2,s3=v3*t3;
+	s=(s1+s2+s3)/2;
+	if (s1<s)
+	{
+		if (s1+s2<s)
 		{
-			T=t1+t2+(s-v1*t1-v2*t2)/v3;
+			T=t1+t2+(s-s1-s2)/v3;
 		}
 		else
 		{
-			T=t1+(s-v1*t1)/v2;
+			T=t1+(s-s1)/v2;
 		}
 	}
 	else
@@ -25,4 +32,7 @@ int main()
 		T=s/v1;
 	}
 	cout<<"Путник пройдет половину пути за "<<T<<" часов."<<endl;
+	}
+	system("pause");
+	return 0;
 }
