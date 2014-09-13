@@ -6,6 +6,16 @@ int main()
 	double a;
 	cout<<"Введите длину в дюймах"<<endl;
 	cin>>a;
-	cout<<(int)(a*0.0254)<<"m"<<(int)(a*2.54-(int)(a*0.0254)*100)<<"sm"<<(a*25.4-(int)(a*0.0254)*100-(int)(a*2.54)*10)<<"mm"<<endl;
+	if (a<0)
+	{
+		cout<<"Введено некорректное значение."<<endl;
+	}
+	else
+	{
+	double m=a*0.0254;
+	double sm=a*2.54;
+	cout<<(int)m<<"m"<<(int)(sm-(int)m*100)<<"sm"<<(a*25.4-(int)sm*10)<<"mm"<<endl;
+	}
+	system("pause");
 	return 0;
 }
