@@ -29,7 +29,7 @@ int main()
 	    k=(p*p)/(pow(10,S-N));
 	    k=k%10;
 	    cout<<"The "<<N<<" number is "<<k<<"."<<endl;
-	    return 0;
-    }
+	}
+	return 0;
 }
 	

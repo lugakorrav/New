@@ -1,14 +1,14 @@
-﻿Построение начато 18.09.2014 14:25:06.
-     1>Проект "C:\Users\Гриха\Documents\Visual Studio 2012\Projects\ConsoleApplication6\ConsoleApplication6\ConsoleApplication6.vcxproj" в узле 2 (целевые объекты Build).
+﻿Построение начато 20.09.2014 12:36:06.
+     1>Проект "C:\Users\Гриха\Documents\GitHub\New\Zadanie_2_var_4\ConsoleApplication6\ConsoleApplication6.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "Исходный код.cpp"
-         Исходный код.cpp
-     1>c:\users\гриха\documents\visual studio 2012\projects\consoleapplication6\consoleapplication6\исходный код.cpp(29): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt source.cpp
+         source.cpp
+     1>c:\users\гриха\documents\github\new\zadanie_2_var_4\consoleapplication6\source.cpp(29): warning C4244: =: преобразование "double" в "int", возможна потеря данных
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Гриха\Documents\Visual Studio 2012\Projects\ConsoleApplication6\Debug\ConsoleApplication6.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Гриха\Documents\Visual Studio 2012\Projects\ConsoleApplication6\Debug\ConsoleApplication6.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Гриха\Documents\Visual Studio 2012\Projects\ConsoleApplication6\Debug\ConsoleApplication6.lib" /MACHINE:X86 "Debug\Исходный код.obj"
-         ConsoleApplication6.vcxproj -> C:\Users\Гриха\Documents\Visual Studio 2012\Projects\ConsoleApplication6\Debug\ConsoleApplication6.exe
-     1>Построение проекта "C:\Users\Гриха\Documents\Visual Studio 2012\Projects\ConsoleApplication6\ConsoleApplication6\ConsoleApplication6.vcxproj" завершено (целевые объекты Build).
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Гриха\Documents\GitHub\New\Zadanie_2_var_4\Debug\ConsoleApplication6.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Гриха\Documents\GitHub\New\Zadanie_2_var_4\Debug\ConsoleApplication6.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Гриха\Documents\GitHub\New\Zadanie_2_var_4\Debug\ConsoleApplication6.lib" /MACHINE:X86 Debug\source.obj
+         ConsoleApplication6.vcxproj -> C:\Users\Гриха\Documents\GitHub\New\Zadanie_2_var_4\Debug\ConsoleApplication6.exe
+     1>Построение проекта "C:\Users\Гриха\Documents\GitHub\New\Zadanie_2_var_4\ConsoleApplication6\ConsoleApplication6.vcxproj" завершено (целевые объекты Build).
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:01.83
+Затраченное время: 00:00:01.55
