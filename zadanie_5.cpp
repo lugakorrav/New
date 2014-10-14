@@ -32,38 +32,38 @@ if ((cin.fail())||(a<1))
 	return 0;
 }
 *(tab+i*n+j)=a;
-if ((a>=1)&&(a<=n))
-    x[a-1]=true;
-else
+if (!((a>=1)&&(a<=n)))
 {
 cout<<"Матрица не является латинским квадратом"<<endl;
 system("pause");
 return 0;
 }
-if (j==0)
-	y[a-1]=true;
-}
-for (j=0; j<n; j++)
-if (x[j])
-x[j]=false;
-else
-{
-cout<<"Матрица не является латинским квадратом"<<endl;
-system("pause");
-return 0;
 }
 }
 for (i=0; i<n; i++)
-if (y[i])
-y[i]=false;
-else
+	for (j=0; j<n; j++)
+	    x[*(tab+i*n+j)]=true;
+for (i=0; i<n; i++)
+	if (!(x[i]))
 {
-	cout<<"Матрица не является латинским квадратом"<<endl;
-    system("pause");
-    return 0;
-}
-cout<<"Матрица является латинским квадратом"<<endl;
+cout<<"Матрица не является латинским квадратом"<<endl;
 system("pause");
 return 0;
 }
+	else
+		x[i]=false;
+for (j=0; j<n; j++)
+	for (i=0; i<n; i++)
+	    x[*(tab+i*n+j)]=true;
+for (i=0; i<n; i++)
+	if (!(x[i]))
+	{
+		cout<<"Матрица не является латинским квадратом"<<endl;
+system("pause");
+return 0;
+    }
+	else
+		x[i]=false;
 }
+cout<<"Матрица является латинским квадратом"<<endl;
+system("pause");
