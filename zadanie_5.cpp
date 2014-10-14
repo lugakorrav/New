@@ -67,3 +67,5 @@ return 0;
 }
 cout<<"Матрица является латинским квадратом"<<endl;
 system("pause");
+return 0;
+}
