@@ -21,7 +21,6 @@ int main()
 	{
 		int *tab = new int[n*n],b;
 		bool *x = new bool[n];
-		bool *y = new bool[n];
 		for (i=0; i<n; i++)
 			x[i]=false;
 		cout<<"Введите элементы матрицы (по строчкам, слева направо)"<<endl;
