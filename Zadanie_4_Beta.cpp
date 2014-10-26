@@ -30,12 +30,13 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	string word;
+	bool j=0;
 	char t[1];
 	char min1=('а'), min2=('А'), max1=('я'), max2=('Я');
 	cout<<"Исправлять ввод русских букв? Ввести '1' - да; '0'- нет"<<endl;
 	cin>>ch;
 	cin.get(t[0]);
-	cout<<"Введите текст"<<endl;
+	cout<<"Введите текст."<<endl<<endl;
 	t[0]=0;
 	while ((int)t[0]!=10)
 	{
@@ -58,12 +59,15 @@ int main()
 				break;
 			}
 		}
+		if (j==0)
+			cout<<endl<<"Результат:"<<endl<<endl;
+		j=1;
 		if (word.size()>0)
 		{
 			cout<<word<<" ";
 			word="";
 		}
 	}
-	cout<<endl;
+	cout<<endl<<endl;
 	return 0;
 }
