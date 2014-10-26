@@ -3,8 +3,11 @@
 #include <string>
 #include <stdio.h>
 using namespace std;
+bool ch;
 char lang(char t)
 {
+	if (ch!=0)
+	{
 	setlocale(LC_ALL, "Russian");
 	if (((int)t==(-15))||(((int)t>=(-96))&&((int)t<=(-81)))||(((int)t>=(-32))&&((int)t<=(-17))))
 		if ((int)t==-15)
@@ -20,15 +23,20 @@ char lang(char t)
 				t-=72;
 			else
 				t+=64;
+	}
 	return t;
 }
 int main()
 {
+	setlocale(LC_ALL, "Russian");
+	cout<<"Исправлять ввод русских букв? Ввести '1' - да; '0'- нет"<<endl;
+	cin>>ch;
 	string word;
 	char t[1];
 	t[0]=0;
 	char min1=('а'), min2=('А'), max1=('я'), max2=('Я');
-	while (t[0]!='.')
+	cout<<"Введите текст"<<endl;
+	while (t[0]!='/0')
 	{
 		cin.get(t[0]);
 		t[0]=lang(t[0]);
