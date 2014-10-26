@@ -29,14 +29,15 @@ char lang(char t)
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	cout<<"Исправлять ввод русских букв? Ввести '1' - да; '0'- нет"<<endl;
-	cin>>ch;
 	string word;
 	char t[1];
-	t[0]=0;
 	char min1=('а'), min2=('А'), max1=('я'), max2=('Я');
+	cout<<"Исправлять ввод русских букв? Ввести '1' - да; '0'- нет"<<endl;
+	cin>>ch;
+	cin.get(t[0]);
 	cout<<"Введите текст"<<endl;
-	while (t[0]!='/0')
+	t[0]=0;
+	while ((int)t[0]!=10)
 	{
 		cin.get(t[0]);
 		t[0]=lang(t[0]);
