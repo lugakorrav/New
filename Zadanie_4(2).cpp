@@ -23,7 +23,7 @@ int main()
 	for (int i=0; i<=str.size(); )
 	{
 		b=1;
-		for (int j=0; (((str[i]>='а')&&(str[i]<='я'))||((str[i]>='А')&&(str[i]<='Я'))); j++)
+		while (((str[i]>='а')&&(str[i]<='я'))||((str[i]>='А')&&(str[i]<='Я')))
 		{
 			for (int k=0; k<N; k++)
 			{
@@ -33,10 +33,11 @@ int main()
 					cout<<buffer<<endl;
 					break;
 				}
-				else
 					b=0;
+					cout<<b<<endl;
 			}
-			i++;
+			if (++i>=str.size())
+				break;
 		}
 		if (b==0)
 			buffer="";
