@@ -6,13 +6,6 @@
 #include <locale.h>
 using namespace std;
 const int N=22;
-bool check (char c)
-{
-	for (int i=0; i<=N; i++)
-		if (((c>='а')&&(c<='я'))||((c>='А')&&(c<='Я')))
-			return 1;
-	return 0;
-}
 int main()
 {
 	setlocale(0,"");
@@ -27,28 +20,29 @@ int main()
 	getline(cin,str);
 	SetConsoleCP(cp);
 	cout<<endl;
-	for (int i=0; i<str.size(); )
+	for (int i=0; i<=str.size(); )
 	{
 		b=1;
-		for (int j=0; check(str[i]); j++)
+		for (int j=0; (((str[i]>='а')&&(str[i]<='я'))||((str[i]>='А')&&(str[i]<='Я'))); j++)
 		{
-			for (int k=0; k<=N; k++)
+			for (int k=0; k<N; k++)
 			{
 				if (str[i]==ch[k])
 				{
 					buffer+=str[i];
+					cout<<buffer<<endl;
 					break;
 				}
-				else 
+				else
 					b=0;
 			}
 			i++;
-			if (b=0)
-				buffer=("");
 		}
+		if (b==0)
+			buffer="";
 		i++;
-			cout<<buffer<<" ";
-			buffer=("");
+		cout<<buffer<<" ";
+		buffer="";
 	}
 	cout<<endl<<endl;
 	system("pause");
