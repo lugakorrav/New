@@ -31,16 +31,15 @@ int main()
 				{
 					buffer+=str[i];
 					cout<<buffer<<endl;
+					b=0;
 					break;
 				}
-					b=0;
-					cout<<b<<endl;
 			}
+			if (b=0)
+				buffer="";
 			if (++i>=str.size())
 				break;
 		}
-		if (b==0)
-			buffer="";
 		i++;
 		cout<<buffer<<" ";
 		buffer="";
