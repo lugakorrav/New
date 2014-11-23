@@ -31,12 +31,12 @@ int main()
 					break;
 				}
 			}
-			if (b==0)
+			if (!b)
 				a=0;
 			if (++i>=str.size())
 				break;
 		}
-		if (a==1)
+		if ((a==1)&&(buffer.size()>0))
 			cout<<buffer<<" ";
 		buffer="";
 		i++;
