@@ -3,6 +3,7 @@ queue::queue()
 {
 	int writeindex=0;
 	int readindex=0;
+	int size=0;
 	cout<<"Введите максимальный размер очереди"<<endl;
 	cin>>MaxSize;
 	Arr = new string[MaxSize];
