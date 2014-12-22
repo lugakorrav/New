@@ -11,6 +11,9 @@ queue::queue()
 queue::~queue()
 {
 	delete[] Arr;
+	int writeindex=0;
+	int readindex=0;
+	int size=0;
 }
 istream& operator >> (istream& in, queue& q)
 {
