@@ -33,8 +33,8 @@ ostream& operator<<(ostream& out, queue& q)
 {
 	if (q.size==0)
 	{
-		return out;
 		cout<<"Очередь пуста"<<endl;
+		return out;
 	}
 	q.size--;
 	out<<q.Arr[q.readindex++];
