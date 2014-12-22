@@ -9,7 +9,7 @@ int main()
 	setlocale(0,"");
 	int cp=GetConsoleCP();
 	string str,buffer;
-	char ch[N+1]="авекмнорстхАВЕКМНОРСТХ";
+	string ch="авекмнорстхАВЕКМНОРСТХ";
 	bool a,b;
 	cout<<"Введите текст"<<endl<<endl;
 	SetConsoleCP(1251);
