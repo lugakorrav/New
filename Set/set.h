@@ -1,8 +1,20 @@
 #pragma once
 #include <iostream>
-#include "interfaces.h"
 
 using namespace std;
+
+template <class T> class ISet
+{
+public:
+	// добавить элемент
+	virtual void add(const T& elem) = 0;
+	// удалить элемент
+	virtual void remove(const T& elem) = 0;
+	// содержится ли элемент
+	virtual bool contains(const T& elem) const = 0;
+	// узнать размер множества
+	virtual int size() const = 0;
+};
 
 template <class T> class MySet : public ISet<T>
 {
@@ -29,7 +41,7 @@ template <class T> MySet<T>::MySet() // По умолчанию выделяет
 {
 	Size = 0;
 	Capacity = 1;
-	data = new T;
+	data = new T[1];
 };
 
 template <class T> MySet<T>::MySet(int StartCapacity)
@@ -58,7 +70,6 @@ template <class T> void MySet<T>::add(const T& elem) // При нехватке 
 	};
 	data[Size] = elem;
 	Size++;
-	
 };
 
 template <class T> void MySet<T>::remove(const T& elem) // Производится поиск указанного элемента в множестве посредством 
