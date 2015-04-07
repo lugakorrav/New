@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string.h>
-#include "set.h"
+#include "MySet.h"
 
 using namespace std;
 
@@ -14,10 +12,11 @@ int main()
 	S.add(arr[1]);
 	S.add(arr[2]);
 	S.show();
-	S.size();
+	cout << endl << S.size() << endl;
 	cout << boolalpha << S.contains(arr[1]) << endl;
 	cout << boolalpha << S.contains(check) << endl;
 	S.remove(arr[1]);
 	S.show();
-	S.size();
+	cout << endl << S.size() << endl;
+	return 0;
 }
