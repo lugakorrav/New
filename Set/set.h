@@ -25,10 +25,11 @@ public:
 	void show();
 };
 
-template <class T> MySet<T>::MySet()
+template <class T> MySet<T>::MySet() // По умолчанию выделяется память под 1 элемент
 {
 	Size = 0;
-	Capacity = 0;
+	Capacity = 1;
+	data = new T;
 };
 
 template <class T> MySet<T>::MySet(int StartCapacity)
@@ -43,9 +44,9 @@ template <class T> MySet<T>::~MySet()
 	delete[] data;
 };
 
-template <class T> void MySet<T>::add(const T& elem)
+template <class T> void MySet<T>::add(const T& elem) // При нехватке места выделяемая под множество память увеличивается вдвое. Сложность - О(N).
 {
-	if (Size == Capacity)
+	if (Size == Capacity) // При копировании данных в новую область памяти временно храним старую.
 	{
 		T* newdata;
 		Capacity *= 2;
@@ -60,7 +61,7 @@ template <class T> void MySet<T>::add(const T& elem)
 	
 };
 
-template <class T> void MySet<T>::remove(const T& elem)
+template <class T> void MySet<T>::remove(const T& elem) // Производится поиск указанного элемента в множестве посредством перебора всех элементов. Сложность - О(N).
 {
 	int i;
 	for (i = 0; data[i] != elem && i < Size; i++);
@@ -69,12 +70,12 @@ template <class T> void MySet<T>::remove(const T& elem)
 		cout << "Not exist" << endl;
 		return;
 	};
-	for (int j = i; j < Size - 1; j++)
+	for (int j = i; j < Size - 1; j++) // Для удаления элемента производится сдвиг всех элементов, стоящих после него путем перебора. Сложность - О(N).
 		data[j] = data[j + 1];
 	Size--;
 };
 
-template <class T> bool MySet<T>::contains(const T& elem) const
+template <class T> bool MySet<T>::contains(const T& elem) const // Производится поиск указанного элемента в множестве посредством перебора всех элементов. Сложность - О(N).
 {
 	for (int i = 0; i < Size; i++)
 	{
@@ -89,8 +90,11 @@ template <class T> int MySet<T>::size() const
 	return Size;
 };
 
-template <class T> void MySet<T>::show()
+template <class T> void MySet<T>::show() // Для проверки.
 {
 	for (int i = 0; i < Size; i++)
 		cout << data[i];
 };
+
+// Всего в методах множества используется 4 алгоритма сложностью О(N). Посредством удвоения размера множества вместо выделения памяти при каждом добавлении элемента получена более
+// высокая производительность за счет увеличения требуемой памяти.
