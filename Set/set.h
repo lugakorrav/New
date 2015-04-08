@@ -12,8 +12,10 @@ private:
 	int Capacity;
 public:
 	MySet();
-	~MySet();
 	MySet(int StartCapacity);
+	MySet(const MySet<T>& S);
+	~MySet();
+	MySet& operator = (const MySet<T>& S);
 	// добавить элемент
 	virtual void add(const T& elem);
 	// удалить элемент
@@ -32,6 +34,15 @@ template <class T> MySet<T>::MySet() // По умолчанию выделяет
 	data = new T[1];
 };
 
+template <class T> MySet<T>::MySet(const MySet<T>& S)
+{
+	data = new T[S.Capacity];
+	Capacity = S.Capacity;
+	Size = S.Size;
+	for (int i = 0; i < Size; i++)
+		data[i] = S.data[i];
+};
+
 template <class T> MySet<T>::MySet(int StartCapacity)
 {
 	Size = 0;
@@ -42,6 +53,18 @@ template <class T> MySet<T>::MySet(int StartCapacity)
 template <class T> MySet<T>::~MySet()
 {
 	delete[] data;
+};
+
+template <class T> MySet<T>& MySet<T>::operator = (const MySet<T>& S)
+{
+	if (Capacity > 0)
+		delete[] data;
+	Capacity = S.Capacity;
+	Size = S.Size;
+	data = new T[Size];
+	for (int i = 0; i < Size; i++)
+		data[i] = S.data[i];
+	return *this;
 };
 
 template <class T> void MySet<T>::add(const T& elem) // Перед добавлением проверяется наличие указанного элемента в множестве                                                   
