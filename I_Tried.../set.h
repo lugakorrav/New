@@ -40,10 +40,10 @@ template <class T> int MySet<T>::FindElem(const T& elem, int min, int max) const
 
 	int mid = (min + max) / 2;
 	if (data[mid] == elem)
-		return (-1);
-	if (min == Size - 1)
-		return Size;
-	if (min == max)
+		return mid*(-1);
+	if (elem > data[max])
+		return max + 1;
+	if (elem < data[min])
 		return min;
 	if (elem < data[mid])
 		return FindElem(elem, min, mid - 1);
@@ -60,14 +60,14 @@ template <class T> void MySet<T>::add(const T& elem)
 		Size++;
 		return;
 	};
-	int index = FindElem(elem, 0, Size - 1);
-	if (index == -1)
+	int index = FindElem(elem, 0, Size - 1); // Сложность - O(log[2](N))
+	if (index <= 0)
 	{
 		cout << "Already exist\n";
 		return;
 	};
 	T* newdata = new T[++Size];
-	for (int i = 0; i < index; i++)
+	for (int i = 0; i < index; i++) // Сложность - O(N)
 		newdata[i] = data[i];
 	newdata[index] = elem;
 	for (int i = index + 1; i < Size; i++)
@@ -81,11 +81,12 @@ template <class T> void MySet<T>::remove(const T& elem)
 {
 	if (Size == 0)
 		return;
-	int index = FindElem(elem, 0, Size - 1);
-	if (index != -1)
+	int index = FindElem(elem, 0, Size - 1); // Сложность - O(log[2](N))
+	if (index > 0)
 		return;
+	index *= (-1);
 	T* newdata = new T[--Size];
-	for (int i = 0; i < index; i++)
+	for (int i = 0; i < index; i++) // Сложность - O(N)
 		newdata[i] = data[i];
 	for (int i = index; i < Size; i++)
 		newdata[i] = data[i + 1];
@@ -96,7 +97,7 @@ template <class T> void MySet<T>::remove(const T& elem)
 
 template <class T> bool MySet<T>::contains(const T& elem) const
 {
-	if (FindElem(elem, 0, Size - 1) == -1)
+	if (FindElem(elem, 0, Size - 1) <= 0) // Сложность - O(log[2](N))
 		return true;
 	return false;
 };
