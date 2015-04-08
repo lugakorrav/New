@@ -4,14 +4,12 @@
 
 using namespace std;
 
-class Exception {};
-
 template <class T> class MySet : public ISet < T >
 {
 private:
 	T* data;
 	int Size;
-	int FindElem(const T& elem, int min, int max);
+	int FindElem(const T& elem, int min, int max) const;
 public:
 	MySet();
 	~MySet();
@@ -24,10 +22,10 @@ public:
 	// узнать размер множества
 	virtual int size() const;
 	void show();
-	
+
 };
 
-template <class T> MySet<T>::MySet() // По умолчанию выделяется память под 1 элемент
+template <class T> MySet<T>::MySet()
 {
 	Size = 0;
 };
@@ -37,16 +35,17 @@ template <class T> MySet<T>::~MySet()
 	delete[] data;
 };
 
-template <class T> int MySet<T>::FindElem(const T& elem, int min, int max)
+template <class T> int MySet<T>::FindElem(const T& elem, int min, int max) const
 {
-	if (min == Size - 1)
-		return Size;
+
 	int mid = (min + max) / 2;
 	if (data[mid] == elem)
-		return -1;
+		return (-1);
+	if (min == Size - 1)
+		return Size;
 	if (min == max)
 		return min;
-	if (elem < mid)
+	if (elem < data[mid])
 		return FindElem(elem, min, mid - 1);
 	else
 		return FindElem(elem, mid + 1, max);
@@ -58,38 +57,48 @@ template <class T> void MySet<T>::add(const T& elem)
 	{
 		data = new T[1];
 		data[0] = elem;
+		Size++;
 		return;
 	};
-	int index;
-	if (index = FindElem(elem, 0, Size - 1) < 0 == -1)
-		throw Exception;
+	int index = FindElem(elem, 0, Size - 1);
+	if (index == -1)
+	{
+		cout << "Already exist\n";
+		return;
+	};
 	T* newdata = new T[++Size];
 	for (int i = 0; i < index; i++)
 		newdata[i] = data[i];
 	newdata[index] = elem;
 	for (int i = index + 1; i < Size; i++)
 		newdata[i] = data[i - 1];
+	delete[] data;
+	data = newdata;
 	return;
 };
 
-template <class T> void MySet<T>::remove(const T& elem) // Производится поиск указанного элемента в множестве посредством 
-{                                                       // перебора всех элементов. Сложность - О(N).
-	
+template <class T> void MySet<T>::remove(const T& elem)
+{
+	if (Size == 0)
+		return;
+	int index = FindElem(elem, 0, Size - 1);
+	if (index != -1)
+		return;
+	T* newdata = new T[--Size];
+	for (int i = 0; i < index; i++)
+		newdata[i] = data[i];
+	for (int i = index; i < Size; i++)
+		newdata[i] = data[i + 1];
+	delete[] data;
+	data = newdata;
+	return;
 };
 
-template <class T> bool MySet<T>::contains(const T& elem) const // Производится поиск указанного элемента в множестве 
-{                                                               // посредством перебора всех элементов. Сложность - О(N).
-	if (min == Size - 1)
-		return false;
-	int mid = (min + max) / 2;
-	if (data[mid] == elem)
+template <class T> bool MySet<T>::contains(const T& elem) const
+{
+	if (FindElem(elem, 0, Size - 1) == -1)
 		return true;
-	if (min == max)
-		return false;
-	if (elem < mid)
-		return FindElem(elem, min, mid - 1);
-	else
-		return FindElem(elem, mid + 1, max);
+	return false;
 };
 
 template <class T> int MySet<T>::size() const
@@ -97,7 +106,7 @@ template <class T> int MySet<T>::size() const
 	return Size;
 };
 
-template <class T> void MySet<T>::show() // Для проверки.
+template <class T> void MySet<T>::show()
 {
 	for (int i = 0; i < Size; i++)
 		cout << data[i];
