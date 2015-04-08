@@ -7,9 +7,9 @@ using namespace std;
 template <class T> class MySet : public ISet < T >
 {
 private:
-	T* data;
+	T* data; // Отсортированный массив
 	int Size;
-	int FindElem(const T& elem, int min, int max) const;
+	int FindElem(const T& elem, int min, int max) const; // Бинарный поиск
 public:
 	MySet();
 	MySet(const MySet<T>& S);
@@ -88,7 +88,7 @@ template <class T> void MySet<T>::add(const T& elem)
 		return;
 	};
 	T* newdata = new T[++Size];
-	for (int i = 0; i < index; i++) // Сложность - O(N)
+	for (int i = 0; i < index; i++) // Сложность - O(N), память выделяется при каждом добавлении/удалении элемента
 		newdata[i] = data[i];
 	newdata[index] = elem;
 	for (int i = index + 1; i < Size; i++)
