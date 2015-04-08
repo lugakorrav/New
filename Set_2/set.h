@@ -12,7 +12,9 @@ private:
 	int FindElem(const T& elem, int min, int max) const;
 public:
 	MySet();
+	MySet(const MySet<T>& S);
 	~MySet();
+	MySet& operator = (const MySet<T>& S);
 	// добавить элемент
 	virtual void add(const T& elem);
 	// удалить элемент
@@ -30,9 +32,28 @@ template <class T> MySet<T>::MySet()
 	Size = 0;
 };
 
+template <class T> MySet<T>::MySet(const MySet<T>& S)
+{
+	data = new T[S.Size];
+	Size = S.Size;
+	for (int i = 0; i < Size; i++)
+		data[i] = S.data[i];
+};
+
 template <class T> MySet<T>::~MySet()
 {
 	delete[] data;
+};
+
+template <class T> MySet<T>& MySet<T>::operator = (const MySet<T>& S)
+{
+	if (Size > 0)
+		delete[] data;
+	Size = S.Size;
+	data = new T[Size];
+	for (int i = 0; i < Size; i++)
+		data[i] = S.data[i];
+	return *this;
 };
 
 template <class T> int MySet<T>::FindElem(const T& elem, int min, int max) const
