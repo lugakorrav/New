@@ -13,44 +13,43 @@ int main()
 	srand((int)time(NULL));
 	World* w = 0;
 
-	_getch();
-	system("CLS");
-	if (GetKeyState(KEY_N))
+	std::cout << "N - создать новое поле; L - загрузить из файла\n";
+	char c = _getch();
+	if (c == 'N' || c == 'n')
 	{
 		int x, y;
-		std::cout << "Enter the size of the world\n";
+		std::cout << "Введите размеры поля\n";
 		std::cin >> x >> y;
 		w = new World(x, y);
 	}
 	else
-	if (GetKeyState(KEY_L))
-	{
-		char* c = new char[200];
-		std::cout << "Enter the load file directory\n";
-		std::cin.getline(c, 200);
-		w = new World(c);
-	};
+		if (c == 'L' || c == 'l')
+		{
+			char* c = new char[200];
+			std::cout << "Введите имя файла для чтения\n";
+			std::cin.getline(c, 200);
+			w = new World(c);
+			delete[] c;
+		};
 	if (!w)
 		return 0;
-
+	std::cout << "S - сохранить; Z - остановить\n";
+	system("pause");
 	while (1)
 	{
-		if (GetKeyState(KEY_Z))
+		if (Pressed('S'))
 		{
+			char* c = new char[200];
+			std::cout << "Введите имя файла для записи\n";
 			_getch();
-			Sleep(500);
-			if (GetKeyState(KEY_S))
-			{
-				char* c = new char[200];
-				std::cout << "Enter the save file directory\n";
-				std::cin.getline(c, 200);
-				w->SaveWorld(c);
-			};
+			std::cin.getline(c, 200);
+			w->SaveWorld(c);
+			delete[] c;
+			system("pause");
 		};
 		w->PerformStep();
 		w->View();
 	};
-
-	_getch();
+	delete w;
 	return true;
 }
