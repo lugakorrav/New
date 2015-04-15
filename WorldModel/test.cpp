@@ -8,7 +8,6 @@
 
 int main()
 {
-	//	settings
 	setlocale(LC_ALL, "russian");
 	srand((int)time(NULL));
 	World* w = 0;
@@ -33,7 +32,7 @@ int main()
 		};
 	if (!w)
 		return 0;
-	std::cout << "S - сохранить; Z - остановить\n";
+	std::cout << "S - сохранить\n";
 	system("pause");
 	while (1)
 	{
@@ -41,7 +40,7 @@ int main()
 		{
 			char* c = new char[200];
 			std::cout << "Введите имя файла для записи\n";
-			_getch();
+			std::cin.get();
 			std::cin.getline(c, 200);
 			w->SaveWorld(c);
 			delete[] c;
