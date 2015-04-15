@@ -13,7 +13,8 @@ int main()
 	srand((int)time(NULL));
 	World* w = 0;
 
-	system("pause");
+	_getch();
+	system("CLS");
 	if (GetKeyState(KEY_N))
 	{
 		int x, y;
@@ -34,9 +35,10 @@ int main()
 
 	while (1)
 	{
-		if (GetKeyState(KEY_SPACE))
+		if (GetKeyState(KEY_Z))
 		{
-			system("pause");
+			_getch();
+			Sleep(500);
 			if (GetKeyState(KEY_S))
 			{
 				char* c = new char[200];
@@ -49,6 +51,6 @@ int main()
 		w->View();
 	};
 
-	system("pause");
+	_getch();
 	return true;
 }
