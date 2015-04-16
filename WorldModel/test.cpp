@@ -51,7 +51,7 @@ int main()
 				std::cout << "Введите имя файла для записи\n";
 				std::cin.get();
 				std::cin.getline(c, 200);
-				w->SaveWorld(c);
+				bool is_saved = w->SaveWorld(c);
 				delete[] c;
 				std::cout << "Сохранено\n";
 				system("pause");
@@ -61,16 +61,34 @@ int main()
 			{
 				std::cout << "1 - сохранить\n";
 				char buf = _getch();
-				if (buf == '1')
+				switch (buf)
+				{
+				case '1':
 				{
 					char* c = new char[200];
 					std::cout << "Введите имя файла для записи\n";
 					std::cin.get();
 					std::cin.getline(c, 200);
-					w->SaveWorld(c);
+					bool is_saved = w->SaveWorld(c);
 					delete[] c;
-					std::cout << "Сохранено\n";
+					switch (is_saved)
+					{
+					case 1:
+					{
+						std::cout << "Сохранено\n";
+						break;
+					};
+					case 0:
+					{
+						std::cout << "Не сохранено\n";
+						break;
+					};
+					};
 					system("pause");
+					break;
+				};
+				case 27:
+					return 0;
 				};
 				break;
 			};
